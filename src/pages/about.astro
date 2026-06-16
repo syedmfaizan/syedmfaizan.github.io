@@ -1,4 +1,52 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro"; import PageHero from "@components/PageHero.astro"; import CTA from "@components/CTA.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/PageHero.astro";
+import CTA from "../components/CTA.astro";
 ---
-<BaseLayout title="About — Syed M Faizan" description="About Syed M Faizan, software engineer focused on platform security, IAM, distributed systems, and engineering leadership."><PageHero eyebrow="About" title="I build practical systems that improve security, reliability, and engineering effectiveness." description="My work sits at the intersection of backend engineering, platform security, IAM, distributed systems, and technical leadership." /><section class="mx-auto max-w-4xl px-5 pb-16 lg:px-8"><div class="prose-custom"><p>I am a software engineer based in Canada with 12+ years of experience building full-stack, backend-heavy, and platform systems. My recent work focuses on security engineering, identity and access management, least-privilege enforcement, and scalable internal platforms.</p><p>I started as a web and full-stack engineer, worked across healthcare, finance, taxation, professional services, and business management domains, completed an MS in Computer Science at Dalhousie University, and now work on platform security systems at Yelp.</p><h2>How I work</h2><ul><li>I like turning ambiguous platform and security problems into practical systems.</li><li>I care about clean technical design, maintainability, and operational safety.</li><li>I prefer pragmatic architecture over over-engineered solutions.</li><li>I enjoy mentoring engineers and improving engineering quality across teams.</li><li>I believe internal platforms succeed when they make the right workflow the easy workflow.</li></ul><h2>Engineering principles</h2><ul><li>Security systems must respect developer workflows.</li><li>Architecture should reduce future ambiguity.</li><li>Operational safety matters as much as feature delivery.</li><li>Ownership should be visible, not tribal knowledge.</li><li>Good internal platforms should feel boring to use.</li></ul></div></section><CTA /></BaseLayout>
+
+<BaseLayout
+  title="About — Syed M Faizan"
+  description="About Syed M Faizan, software engineer focused on platform security, IAM, distributed systems, and engineering leadership."
+  ><PageHero
+    eyebrow="About"
+    title="I build practical systems that improve security, reliability, and engineering effectiveness."
+    description="My work sits at the intersection of backend engineering, platform security, IAM, distributed systems, and technical leadership."
+  /><section class="mx-auto max-w-4xl px-5 pb-16 lg:px-8">
+    <div class="prose-custom">
+      <p>
+        I am a software engineer based in Canada with 12+ years of experience
+        building full-stack, backend-heavy, and platform systems. My recent work
+        focuses on security engineering, identity and access management,
+        least-privilege enforcement, and scalable internal platforms.
+      </p><p>
+        I started as a web and full-stack engineer, worked across healthcare,
+        finance, taxation, professional services, and business management
+        domains, completed an MS in Computer Science at Dalhousie University,
+        and now work on platform security systems at Yelp.
+      </p><h2>How I work</h2><ul>
+        <li>
+          I like turning ambiguous platform and security problems into practical
+          systems.
+        </li><li>
+          I care about clean technical design, maintainability, and operational
+          safety.
+        </li><li>
+          I prefer pragmatic architecture over over-engineered solutions.
+        </li><li>
+          I enjoy mentoring engineers and improving engineering quality across
+          teams.
+        </li><li>
+          I believe internal platforms succeed when they make the right workflow
+          the easy workflow.
+        </li>
+      </ul><h2>Engineering principles</h2><ul>
+        <li>Security systems must respect developer workflows.</li><li>
+          Architecture should reduce future ambiguity.
+        </li><li>Operational safety matters as much as feature delivery.</li><li
+        >
+          Ownership should be visible, not tribal knowledge.
+        </li><li>Good internal platforms should feel boring to use.</li>
+      </ul>
+    </div>
+  </section><CTA /></BaseLayout
+>
