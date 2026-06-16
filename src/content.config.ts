@@ -1,5 +1,4 @@
 import { defineCollection } from "astro:content";
-import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 const caseStudies = defineCollection({
   type: "content",
