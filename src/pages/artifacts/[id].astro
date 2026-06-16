@@ -2,9 +2,9 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
 export async function getStaticPaths() {
-  const entries = await getCollection("case-studies");
+  const entries = await getCollection("artifacts");
   return entries.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { id: entry.id },
     props: { entry },
   }));
 }
@@ -18,14 +18,14 @@ const { Content } = await entry.render();
 >
   <article class="mx-auto max-w-4xl px-5 py-16 lg:px-8">
     <a
-      href="/case-studies"
+      href="/artifacts"
       class="mb-8 inline-block text-sm font-semibold text-brand-700 hover:text-brand-600"
-      >← Case Studies</a
+      >← Artifacts</a
     >
     <div class="prose-custom">
-      <p class="section-label mb-4">{entry.data.tags?.join(" · ")}</p><h1>
-        {entry.data.title}
-      </h1><p class="text-xl leading-9 text-ink-600">
+      <p class="section-label mb-4">
+        {entry.data.type} · {entry.data.tags?.join(" · ")}
+      </p><h1>{entry.data.title}</h1><p class="text-xl leading-9 text-ink-600">
         {entry.data.description}
       </p><Content />
     </div>
