@@ -11,7 +11,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   // Also allow static assets (like images or CSS) to load normally
   if (
     isMaintenance &&
-    url.pathname !== "/maintenance" &&
+    !url.pathname.endsWith("/maintenance") &&
     !url.pathname.startsWith("/_astro")
   ) {
     return context.redirect("/maintenance", 307);
