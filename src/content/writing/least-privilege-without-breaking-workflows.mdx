@@ -1,0 +1,22 @@
+---
+title: "Least Privilege Without Breaking Developer Workflows"
+description: "Practical approaches to detecting, notifying, and revoking unused access safely at scale."
+date: 2024-04-20
+readingTime: "6 min read"
+featured: true
+tags: ["IAM", "Security", "Platform"]
+---
+
+Least privilege is easy to support in principle and hard to implement in practice. The difficult part is not identifying that unused access exists. The difficult part is removing it safely.
+
+## The trust problem
+
+If an access management system breaks critical workflows, teams will work around it. That means the design needs to optimize for operational safety as much as security.
+
+## Practical design principles
+
+- Start with visibility before enforcement.
+- Notify before revoking.
+- Make ownership explicit.
+- Keep audit trails.
+- Build escape hatches for urgent recovery.

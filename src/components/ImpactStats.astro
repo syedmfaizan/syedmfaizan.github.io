@@ -1,0 +1,4 @@
+---
+import { IMPACT_STATS } from "../site.config";
+---
+<section class="mx-auto max-w-7xl px-5 py-8 lg:px-8"><div class="grid gap-4 rounded-3xl border border-slate-200 bg-white p-4 shadow-soft md:grid-cols-2 lg:grid-cols-4">{IMPACT_STATS.map((stat) => (<article class="rounded-2xl p-5"><p class="text-3xl font-bold tracking-tight text-ink-950">{stat.value}</p><h3 class="mt-2 text-sm font-bold text-ink-950">{stat.label}</h3><p class="mt-2 text-sm leading-6 text-ink-600">{stat.description}</p></article>))}</div></section>

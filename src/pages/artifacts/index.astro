@@ -1,0 +1,13 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/PageHero.astro";
+import Card from "@components/Card.astro";
+import { getCollection } from "astro:content";
+const items = (await getCollection("artifacts")).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+---
+<BaseLayout title="Artifacts — Syed M Faizan" description="Templates, checklists, and references for platform security, access reviews, and engineering decision-making.">
+  <PageHero eyebrow="Artifacts" title="Reusable engineering artifacts." description="Templates, checklists, and references for platform security, access reviews, and engineering decision-making." />
+  <section class="mx-auto grid max-w-7xl gap-5 px-5 pb-20 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
+    {items.map((item)=>(<Card href={`/artifacts/${item.slug}`} title={item.data.title} description={item.data.description} meta={`${item.data.type} · ${item.data.tags[0] ?? "Engineering"}`} />))}
+  </section>
+</BaseLayout>

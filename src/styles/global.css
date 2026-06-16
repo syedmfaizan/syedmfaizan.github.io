@@ -1,1 +1,22 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root { color-scheme: light; --selection-bg: #dbeafe; }
+html { scroll-behavior: smooth; }
+body { @apply bg-slate-50 text-ink-900 antialiased; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+::selection { background: var(--selection-bg); }
+a { @apply transition-colors; }
+.prose-custom { @apply max-w-none text-ink-700; }
+.prose-custom h1 { @apply mb-4 text-4xl font-bold tracking-tight text-ink-950 md:text-5xl; }
+.prose-custom h2 { @apply mt-10 mb-4 text-2xl font-bold tracking-tight text-ink-950; }
+.prose-custom h3 { @apply mt-8 mb-3 text-xl font-bold text-ink-950; }
+.prose-custom p { @apply mb-5 leading-8; }
+.prose-custom ul { @apply mb-6 list-disc space-y-2 pl-6; }
+.prose-custom ol { @apply mb-6 list-decimal space-y-2 pl-6; }
+.prose-custom li { @apply leading-7; }
+.prose-custom a { @apply font-medium text-brand-600 underline decoration-brand-200 underline-offset-4 hover:text-brand-700; }
+.prose-custom blockquote { @apply my-8 border-l-4 border-brand-500 bg-white p-5 text-ink-700 shadow-sm; }
+.prose-custom code { @apply rounded bg-slate-100 px-1.5 py-0.5 text-sm text-ink-900; }
+.prose-custom pre { @apply my-6 overflow-x-auto rounded-2xl bg-ink-950 p-5 text-sm text-slate-100; }
+.section-label { @apply text-sm font-bold uppercase tracking-[0.2em] text-brand-600; }
+.focus-ring { @apply focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 focus:ring-offset-slate-50; }

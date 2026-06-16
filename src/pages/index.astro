@@ -1,11 +1,23 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BaseLayout from "@layouts/BaseLayout.astro";
+import ButtonLink from "@components/ButtonLink.astro";
+import HeroIllustration from "@components/HeroIllustration.astro";
+import ImpactStats from "@components/ImpactStats.astro";
+import CoreAreas from "@components/CoreAreas.astro";
+import Card from "@components/Card.astro";
+import CTA from "@components/CTA.astro";
+import SectionHeader from "@components/SectionHeader.astro";
+import { getCollection } from "astro:content";
+import { Mail, Linkedin, FileText } from "lucide-astro";
+import { SITE } from "../site.config";
+const caseStudies = (await getCollection("case-studies")).filter((item) => item.data.featured).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf()).slice(0,4);
+const writing = (await getCollection("writing")).filter((item) => item.data.featured).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf()).slice(0,4);
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+<section class="mx-auto grid max-w-7xl items-center gap-12 px-5 py-16 md:py-24 lg:grid-cols-[1fr_0.9fr] lg:px-8"><div><p class="section-label mb-5">Software Engineer</p><h1 class="max-w-4xl text-5xl font-bold tracking-tight text-ink-950 md:text-7xl">Building secure, resilient, and scalable systems.</h1><p class="mt-6 max-w-2xl text-lg leading-9 text-ink-600">I help engineering organizations design and scale secure internal platforms, access management systems, and reliable backend services.</p><div class="mt-8 flex flex-wrap gap-3"><ButtonLink href={SITE.resumePath}><FileText class="mr-2" size={18} />View Resume</ButtonLink><ButtonLink href="/contact" variant="secondary"><Mail class="mr-2" size={18} />Let’s Connect</ButtonLink><ButtonLink href={SITE.linkedin} variant="secondary" target="_blank"><Linkedin class="mr-2" size={18} />LinkedIn</ButtonLink></div><p class="mt-8 text-sm text-ink-600">{SITE.location}</p></div><HeroIllustration /></section>
+<ImpactStats /><CoreAreas />
+<section class="mx-auto max-w-7xl px-5 py-14 lg:px-8"><div class="flex flex-col justify-between gap-4 md:flex-row md:items-end"><SectionHeader eyebrow="Selected work" title="Featured case studies" description="Public-safe summaries of the systems, patterns, and engineering tradeoffs behind my work." /><a href="/case-studies" class="mb-8 text-sm font-semibold text-brand-700 hover:text-brand-600">View all case studies →</a></div><div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">{caseStudies.map((item)=>(<Card href={`/case-studies/${item.slug}`} title={item.data.title} description={item.data.summary} meta={item.data.tags.slice(0,2).join(" · ")} />))}</div></section>
+<section class="mx-auto max-w-7xl px-5 py-14 lg:px-8"><div class="flex flex-col justify-between gap-4 md:flex-row md:items-end"><SectionHeader eyebrow="Writing" title="Latest notes" description="Short, practical engineering notes on platform security, IAM, architecture, and maintainable systems." /><a href="/writing" class="mb-8 text-sm font-semibold text-brand-700 hover:text-brand-600">View all writing →</a></div><div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">{writing.map((item)=>(<Card href={`/writing/${item.slug}`} title={item.data.title} description={item.data.description} meta={`${item.data.readingTime} · ${item.data.tags[0] ?? "Engineering"}`} />))}</div></section>
+<section class="mx-auto max-w-7xl px-5 py-14 lg:px-8"><div class="grid gap-8 rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm lg:grid-cols-[0.8fr_1.2fr] lg:p-10"><div class="rounded-3xl bg-gradient-to-br from-brand-50 to-slate-100 p-8"><p class="section-label mb-4">About me</p><h2 class="text-3xl font-bold tracking-tight text-ink-950">Engineering at the intersection of security, systems, and people.</h2></div><div class="flex flex-col justify-center"><p class="text-base leading-8 text-ink-600">I enjoy solving complex engineering problems where architecture, operational safety, security, and developer workflows meet. My work focuses on turning ambiguous platform and IAM problems into practical systems that teams can adopt.</p><div class="mt-6"><ButtonLink href="/about" variant="secondary">More about me</ButtonLink></div></div></div></section>
+<CTA />
+</BaseLayout>

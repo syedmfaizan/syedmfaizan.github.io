@@ -1,0 +1,19 @@
+---
+import { Mail } from "lucide-astro";
+import { NAV_ITEMS, SITE } from "../site.config";
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+---
+<header class="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+    <a href="/" class="focus-ring flex items-center gap-3 rounded-xl" aria-label="Syed M Faizan home">
+      <span class="grid h-10 w-10 place-items-center rounded-xl bg-ink-950 text-sm font-bold tracking-wider text-white">SF</span>
+      <span class="leading-tight"><span class="block text-sm font-bold uppercase tracking-[0.18em] text-ink-950">Syed M Faizan</span><span class="hidden text-xs text-ink-600 sm:block">Software Engineer</span></span>
+    </a>
+    <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary navigation">
+      {NAV_ITEMS.map((item) => (<a href={item.href} class:list={["focus-ring rounded-lg px-3 py-2 text-sm font-medium", isActive(item.href) ? "bg-brand-50 text-brand-700" : "text-ink-700 hover:bg-slate-100 hover:text-ink-950"]}>{item.label}</a>))}
+    </nav>
+    <a href={`mailto:${SITE.email}`} class="focus-ring hidden items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-ink-900 shadow-sm hover:border-brand-500 hover:text-brand-700 lg:inline-flex"><Mail size={16} />Let’s Connect</a>
+    <details class="relative lg:hidden"><summary class="focus-ring list-none rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm font-semibold text-ink-900 shadow-sm">Menu</summary><div class="absolute right-0 mt-3 w-64 rounded-2xl border border-slate-200 bg-white p-2 shadow-soft">{NAV_ITEMS.map((item) => (<a href={item.href} class:list={["block rounded-xl px-4 py-3 text-sm font-medium", isActive(item.href) ? "bg-brand-50 text-brand-700" : "text-ink-700 hover:bg-slate-100 hover:text-ink-950"]}>{item.label}</a>))}<a href={`mailto:${SITE.email}`} class="mt-2 block rounded-xl bg-ink-950 px-4 py-3 text-sm font-semibold text-white">Let’s Connect</a></div></details>
+  </div>
+</header>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import PageHero from "@components/PageHero.astro";
+import Card from "@components/Card.astro";
+import { getCollection } from "astro:content";
+const items = (await getCollection("case-studies")).sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf());
+---
+<BaseLayout title="Case Studies — Syed M Faizan" description="Selected work summarized through problems, roles, tradeoffs, and impact without exposing confidential implementation details.">
+  <PageHero eyebrow="Case Studies" title="Public-safe case studies." description="Selected work summarized through problems, roles, tradeoffs, and impact without exposing confidential implementation details." />
+  <section class="mx-auto grid max-w-7xl gap-5 px-5 pb-20 md:grid-cols-2 lg:grid-cols-3 lg:px-8">
+    {items.map((item)=>(<Card href={`/case-studies/${item.slug}`} title={item.data.title} description={item.data.description} meta={item.data.tags.slice(0,2).join(" · ")} />))}
+  </section>
+</BaseLayout>

@@ -1,15 +1,13 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
-
-import tailwindcss from '@tailwindcss/vite';
-
-import mdx from '@astrojs/mdx';
-
-// https://astro.build/config
+import { defineConfig } from "astro/config";
+import mdx from "@astrojs/mdx";
+import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()]
-  },
+  site: "https://syedmfaizan.com",
+  integrations: [mdx(), sitemap()],
+  markdown: { shikiConfig: { theme: "github-light" } },
 
-  integrations: [mdx()]
+  vite: {
+    plugins: [tailwindcss()],
+  },
 });

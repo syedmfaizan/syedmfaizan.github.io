@@ -1,0 +1,18 @@
+---
+title: "Event-Driven Architecture: Planning Before Implementation"
+description: "Why upfront design decisions save pain when systems scale."
+date: 2024-01-15
+readingTime: "6 min read"
+featured: true
+tags: ["Architecture", "Distributed Systems"]
+---
+
+Event-driven systems can reduce coupling, but they also introduce new failure modes. Planning matters.
+
+## Questions to answer early
+
+- What is the source of truth?
+- Are events commands, facts, or notifications?
+- How will consumers handle retries?
+- What happens when events arrive out of order?
+- How will schemas evolve?
