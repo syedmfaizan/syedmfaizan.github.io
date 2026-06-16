@@ -1,5 +1,5 @@
+@config "../../tailwind.config.mjs";
 @import "tailwindcss";
-@import "../../tailwind.config.mjs";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
